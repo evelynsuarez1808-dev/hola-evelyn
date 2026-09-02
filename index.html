@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola Evelyn</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at top, #fff7d6 0%, #ffd6e8 25%, #b8d5ff 60%, #7f9cf5 100%);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .app {
+        width: 100%;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .screen {
+        width: min(90vw, 700px);
+        background: rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(12px);
+        border-radius: 28px;
+        padding: 54px 40px;
+        box-shadow: 0 30px 80px rgba(43, 42, 114, 0.25);
+        text-align: center;
+        display: none;
+        animation: fadeIn 0.35s ease;
+      }
+
+      .screen.active {
+        display: block;
+      }
+
+      .tag {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.3);
+        color: #4a3c8a;
+        border-radius: 999px;
+        padding: 8px 18px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        margin: 0;
+        color: #1d1b4d;
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        line-height: 1.1;
+        font-weight: 800;
+      }
+
+      p {
+        margin: 18px auto 28px;
+        max-width: 520px;
+        font-size: 1.1rem;
+        color: rgba(29, 27, 77, 0.8);
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 16px 34px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: 0 18px 30px rgba(124, 58, 237, 0.4);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 22px 35px rgba(124, 58, 237, 0.5);
+      }
+
+      .btn.secondary {
+        background: linear-gradient(135deg, #1f2937 0%, #475569 100%);
+        box-shadow: 0 18px 30px rgba(31, 41, 55, 0.25);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <div id="homeScreen" class="screen active">
+        <div class="tag">Bienvenida</div>
+        <h1>Bienvenid@ a mi primera página web</h1>
+        <p>Gracias por visitar este espacio. Aquí comienza una nueva aventura digital con estilo, color y creatividad.</p>
+        <button class="btn" id="enterBtn">Entrar</button>
+      </div>
+
+      <div id="welcomeScreen" class="screen">
+        <div class="tag">Acceso</div>
+        <h1>Has entrado en mi primera web</h1>
+        <p>¡Qué bonito que te hayas quedado por aquí!</p>
+        <button class="btn secondary" id="backBtn">Volver</button>
+      </div>
+    </div>
+
+    <script>
+      const homeScreen = document.getElementById("homeScreen");
+      const welcomeScreen = document.getElementById("welcomeScreen");
+      const enterBtn = document.getElementById("enterBtn");
+      const backBtn = document.getElementById("backBtn");
+
+      enterBtn.addEventListener("click", () => {
+        homeScreen.classList.remove("active");
+        welcomeScreen.classList.add("active");
+      });
+
+      backBtn.addEventListener("click", () => {
+        welcomeScreen.classList.remove("active");
+        homeScreen.classList.add("active");
+      });
+    </script>
+  </body>
+</html>
